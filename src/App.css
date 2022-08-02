@@ -1,0 +1,45 @@
+* {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.list {
+  border-bottom: 2px solid black;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  white-space:pre;
+}
+
+.column {
+  float: center;
+  width: 33.33%;
+  padding: 0px;
+}
+
+.label {
+  margin-top: -3.5em;
+  margin-left: 1em;
+  margin-right: 2em;
+  margin-bottom: 0.5em;
+}
+
+.floatLeft {
+  margin-right: 20em;
+}
+
+.floatRight {
+  margin-left: 30em;  
+}
+
+.nameLeft {
+  margin-right: 9em;
+}
+
+.finLeft {
+  margin-right: 8em;
+}
