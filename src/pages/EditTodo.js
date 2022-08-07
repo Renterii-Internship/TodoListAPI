@@ -1,29 +1,36 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, editTodo, asyncLoad } from "../features/todos/todosSlice";
+import {
+  addTodo,
+  editTodo,
+  asyncLoad,
+  getAllTodos,
+} from "../features/user/userSlice";
 import { ToastContainer, toast } from "react-toastify";
+import Navbar from "../features/Navigation/Header";
 import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
 
 function EditTodo() {
-  const todos = useSelector((state) => state.todos.list);
-  const loading = useSelector((state) => state.todos.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [selected, setSelected] = useState(false);
+  const todos = useSelector((state) => state.user.todos);
+  const loading = useSelector((state) => state.user.loading);
 
   useEffect(() => {
+    dispatch(getAllTodos());
     if (params.id) {
-      const todo = todos.find((item) => item.id === params.id);
+      const todo = todos.find((item) => item._id === params.id);
       if (todo) {
-        setName(todo.name);
-        setSelected(todo.finished);
+        setDescription(todo.description);
+        setSelected(todo.completed);
       }
     }
-  }, [todos, params]);
+  }, [dispatch, todos, params]);
 
   const toasting = (dest) => {
     dispatch(asyncLoad(true));
@@ -44,28 +51,28 @@ function EditTodo() {
 
   const submitInput = () => {
     let ids = params.id;
-    if (name === "") {
-      alert("Please enter a name");
+    if (description === "") {
+      alert("Please enter a description");
     } else {
       if (ids) {
-        dispatch(editTodo({ id: ids, name: name, finished: selected }));
+        dispatch(editTodo({ _id: ids, desc: description, comp: selected }));
       } else {
         const todo = {
-          id: Date.now().toString(),
-          name: name,
-          finished: selected,
+          description: description,
+          completed: selected,
         };
         dispatch(addTodo(todo));
       }
-      toasting("/");
+      toasting("/todos-list");
     }
   };
 
   return (
     <div>
+      <Navbar />
       <ToastContainer theme="colored" />
       <button
-        onClick={() => toasting("/")}
+        onClick={() => toasting("/todos-list")}
         disabled={loading}
         className="btn btn-secondary floatLeft"
       >
@@ -76,8 +83,8 @@ function EditTodo() {
         <input
           type="text"
           placeholder="Name Here"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           disabled={loading}
         />
       </div>
@@ -90,7 +97,7 @@ function EditTodo() {
           <span key={item.id}>
             <input
               type="radio"
-              id={item.id}
+              id={item._id}
               name="choose"
               value={item.value}
               onChange={(e) => setSelected(e.target.value === "yes")}
