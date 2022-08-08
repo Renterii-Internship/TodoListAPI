@@ -101,7 +101,7 @@ function EditTodo() {
               name="choose"
               value={item.value}
               onChange={(e) => setSelected(e.target.value === "yes")}
-              className="form-check-name"
+              className="form-check-input"
               checked={(selected ? "yes" : "no") === item.value}
               disabled={loading}
             />

@@ -17,8 +17,11 @@ function SignUp() {
         Back
       </button>
       <div>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name" className="form-label">
+          Name:
+        </label>
         <input
+          className="form-control"
           type="text"
           id="name"
           name="name"
@@ -27,8 +30,11 @@ function SignUp() {
         ></input>
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className="form-label">
+          Email:
+        </label>
         <input
+          className="form-control"
           type="text"
           id="email"
           name="email"
@@ -37,8 +43,11 @@ function SignUp() {
         ></input>
       </div>
       <div>
-        <label htmlFor="pass">Password (8 characters minimum):</label>
+        <label htmlFor="pass" className="form-label">
+          Password (8 characters minimum):
+        </label>
         <input
+          className="form-control"
           type={isShown ? "text" : "password"}
           id="pass"
           name="password"
@@ -49,8 +58,11 @@ function SignUp() {
         ></input>
       </div>
       <div>
-        <label htmlFor="age">Age:</label>
+        <label htmlFor="age" className="form-label">
+          Age:
+        </label>
         <input
+          className="form-control"
           type="number"
           id="age"
           name="age"
@@ -59,7 +71,11 @@ function SignUp() {
         ></input>
       </div>
       <div>
+        <label htmlFor="isShown" className="form-label">
+          Show Password:
+        </label>
         <input
+          className="form-check-input"
           type="checkbox"
           id="isShown"
           name="isShown"

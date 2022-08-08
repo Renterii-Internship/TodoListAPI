@@ -20,8 +20,11 @@ function Login() {
         Register User
       </button>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className="form-label">
+          Email:
+        </label>
         <input
+          className="form-control"
           type="text"
           id="email"
           name="email"
@@ -30,8 +33,11 @@ function Login() {
         ></input>
       </div>
       <div>
-        <label htmlFor="pass">Password (8 characters minimum):</label>
+        <label htmlFor="pass" className="form-label">
+          Password (8 characters minimum):
+        </label>
         <input
+          className="form-control"
           type={isShown ? "text" : "password"}
           id="pass"
           name="password"
@@ -42,8 +48,11 @@ function Login() {
         ></input>
       </div>
       <div>
-        <label htmlFor="show">Show Password:</label>
+        <label htmlFor="isShown" className="form-label">
+          Show Password:
+        </label>
         <input
+          className="form-check-input"
           type="checkbox"
           id="isShown"
           name="isShown"
