@@ -3,7 +3,7 @@ import { React } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import store from "./app/store";
 import { Provider } from "react-redux";
-import SignUp from "./pages/Register";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import EditTodo from "./pages/EditTodo";
 import TodosList from "./pages/TodosList";
@@ -18,7 +18,7 @@ function App() {
           <Route path="todo" element={<EditTodo />} />
           <Route path="todos-list" element={<TodosList />} />
           <Route path="user-home" element={<UserHome />} />
-          <Route path="register" element={<SignUp />} />
+          <Route path="register" element={<Register />} />
           <Route path="*" element={<Login />} />
         </Routes>
       </Router>
